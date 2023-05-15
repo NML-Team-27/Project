@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62907215bdd431dbb65f0e7aeeb378235e241ffbf4a6ac35f9544a3c1bbe7538
-size 306
+Original data downloaded on 2016-12-07 from:
+    paris,sncf: http://files.transilien.com/horaires/gtfs/export-TN-GTFS-LAST.zip
+    paris,ratp: http://dataratp.download.opendatasoft.com/RATP_GTFS_FULL.zip
+Extract timezone: CET (+0100)
+The data should cover all relevant modes of intra-city public transport.

@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:63890b3375cfb4584971375bf183c87c74b85150d16b60e6ad6a52c7adec8cc2
-size 435
+"Prague public transport extract" by Rainer Kujala, Christoffer Weckström and Richard Darst
+
+To the extent possible under law, the person who associated CC0 with
+"Prague public transport extract" has waived all copyright and related or neighboring rights
+to "Prague public transport extract".
+
+You should have received a copy of the CC0 legalcode along with this
+work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.

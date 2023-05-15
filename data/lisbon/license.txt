@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94826d361b8235e6687239374c9b0ba0f89a3c26b4c4609cef3c7ccd9a7e80b2
-size 435
+"Lisbon public transport extract" by Rainer Kujala, Christoffer Weckström and Richard Darst
+
+To the extent possible under law, the person who associated CC0 with
+"Lisbon public transport extract" has waived all copyright and related or neighboring rights
+to "Lisbon public transport extract".
+
+You should have received a copy of the CC0 legalcode along with this
+work. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.

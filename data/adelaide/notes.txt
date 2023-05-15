@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:af5d8ba6057d1beaa300d09896af8834256a5349ed688a446709d09db560a0c7
-size 228
+Original data downloaded on 2016-12-07 from:
+    adelaide: http://adelaidemetro.com.au/GTFS/google_transit.zip
+Extract timezone: Australia/Adelaide (+1030)
+The data should cover all relevant modes of intra-city public transport.
