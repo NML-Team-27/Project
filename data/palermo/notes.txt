@@ -1,4 +1,3 @@
-Original data downloaded on 2016-12-07 from:
-    palermo: http://www.comune.palermo.it/gtfs/amat_feed_gtfs_v1.zip
-Extract timezone: Europe/Rome (+0100)
-Commuter trains are missing. Note that after the time-span covered by the data, four tram lines have been installed in Palermo.
+version https://git-lfs.github.com/spec/v1
+oid sha256:6ee167eefc3c5c7f606d7749ef55c96c0d72499f809765e736827b39079760a1
+size 279

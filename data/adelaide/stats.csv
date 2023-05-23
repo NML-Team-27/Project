@@ -1,2 +1,3 @@
-buffer_center_lat;buffer_center_lon;buffer_radius_km;extract_start_date;link_distance_avg_m;n_connections;n_links;n_stops;network_length_m;vehicle_kilometers
--34.9212657726;138.577492474;40.0;2016-12-12;515;404300;9257;7548;4773959;160526.37799999982
+version https://git-lfs.github.com/spec/v1
+oid sha256:9e3f5086baebf5707d7a74bc59a64920b830d495a6d380e8bc4d9358774340e9
+size 251

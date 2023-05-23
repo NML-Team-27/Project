@@ -1,5 +1,3 @@
-Original data downloaded on 2016-12-14 from:
-    canberra: http://www.transport.act.gov.au/googletransit/google_transit.zip
-    new_south_wales: https://transitfeeds.com/p/transport-for-nsw/237/latest/download
-Extract timezone: Australia/Sydney (+1100)
-The data should cover all relevant modes of intra-city public transport.
+version https://git-lfs.github.com/spec/v1
+oid sha256:74f3e7c1270cc8bcebbcccfb71c42adf0c16d3f6c5ad845ba87310f68215570c
+size 325

@@ -1,4 +1,3 @@
-Original data downloaded on 2016-12-07 from:
-    winnipeg: http://gtfs.winnipegtransit.com/google_transit.zip
-Extract timezone: America/Winnipeg (-0600)
-The data should cover all relevant modes of intra-city public transport.
+version https://git-lfs.github.com/spec/v1
+oid sha256:ce2e952cf75a8ba42bc63e72440fc10b7d5e4cc57d9846db0ebde53b6c7b7231
+size 225
