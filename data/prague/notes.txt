@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:718052d888a09ac4a7623c97335c6a4d155f64291b791c3a2b5f29fdb7fe60c5
-size 171
+Original data downloaded on 2016-12-07 from:
+    prague: http://opendata.iprpraha.cz/DPP/JR/jrdata.zip
+Extract timezone: Europe/Prague (+0100)
+Commuter trains are missing.

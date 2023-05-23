@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d6f72af720930ee7acf9b3c4910ad6cba00c1c7b44e51756cc11e17f0301c29e
-size 228
+Original data downloaded on 2016-12-07 from:
+    helsinki: https://api.digitransit.fi/routing-data/v2/hsl/HSL.zip
+Extract timezone: Europe/Helsinki (+0200)
+The data should cover all relevant modes of intra-city public transport.

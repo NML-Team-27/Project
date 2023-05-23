@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6bef5eda75352f7764ae6c1248d55f3431ad542ad8601ba249936de493fd6e31
-size 773
+This work "Winnipeg public transport extract", is provided under ODC Public Domain Dedication and Licence (PDDL).
+The original public transport schedule data has been provided by Winnipeg Transit under the same license.
+You should have received a copy of the license along with this work. If not, please see <https://opendatacommons.org/licenses/pddl/1.0/>.
+The walking distances between stops have been computed based on information from OpenStreetMap (www.openstreetmap.org) which is licensed under the Open Data Commons Open Database License (https://opendatacommons.org/licenses/odbl/) by the OpenStreetMap Foundation.
+The adapted versions of the schedule data have been been created by Rainer Kujala, Christoffer Weckström and Richard Darst.
+No warranties are given.
