@@ -42,7 +42,7 @@ def create_city_graph(city_name:str, directory:str) -> nx.Graph:
 
 
     # Add edges from the edge list DataFrame to the graph with attributes
-    graph = nx.from_pandas_edgelist(edge_list_df, 'source', 'target', True)
+    graph = nx.from_pandas_edgelist(edge_list_df, 'source', 'target', True,create_using=nx.DiGraph)
 
     #print(graph.get_edge_data(10924,10920))
 
@@ -65,7 +65,14 @@ def get_all_city_graph(directory: str)-> Dict[str, nx.Graph]:
     return all_graphs, all_nodes,directories
 
 def add_attribute_to_name(df, attribute_name, fct,graph):
-    dico_to_value = fct(graph)
+    if "degree" in attribute_name:
+        if "in" in attribute_name:
+            dico_to_value = {k:v for (k,v) in graph.in_degree(list(graph.nodes()))}
+        elif "out" in attribute_name:
+            dico_to_value = {k:v for (k,v) in graph.out_degree(list(graph.nodes()))}
+    else:
+        dico_to_value = fct(graph)
+
     df[attribute_name] = df.apply(lambda x: dico_to_value[x.name],axis=1)
     return df
 
