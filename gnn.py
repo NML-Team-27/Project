@@ -58,18 +58,13 @@ class GNN(nn.Module):
         )
 
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(out_channels_graph * NB_CHANNELS, 1)  # out_channels_graph // 2)
-        # self.fc2 = nn.Linear(out_channels_graph // 2, 1)
+        self.fc1 = nn.Linear(out_channels_graph, 1)
 
     def forward(
-        self, x: Tensor, edge_index: Tensor,batch: Optional[Tensor] = None
+        self, x: Tensor, edge_index: Tensor
     ):
-        batch_size = torch.unique(batch).shape[0]
-        x = self.relu(self.conv(x, edge_index))
+        x = self.conv(x, edge_index)
 
-        x = x.reshape(batch_size, -1)  # Concatenate features of all nodes
-
-        # x = self.relu(self.fc1(x))
         return self.fc1(x).squeeze(1)
 
 
@@ -127,13 +122,8 @@ class GAT(nn.Module):
         self.fc = nn.Linear(out_channels_graph * heads, 1)
 
     def forward(
-        self, x: Tensor, edge_index: Tensor, edge_attr: Tensor, batch: Optional[Tensor] = None
+        self, x: Tensor, edge_index: Tensor
     ):
-        batch_size = torch.unique(batch).shape[0]
-        x = self.conv_layer(x)
-        x = self.gat_layers(x.double(), edge_index=edge_index, edge_attr=edge_attr.double())
-
-        x = pyg.nn.global_add_pool(x, batch=batch)
-        # x = x.reshape(batch_size, -1) # Concatenate features of all nodes
+        x = self.gat_layers(x, edge_index=edge_index)
 
         return self.fc(x).squeeze(1)
