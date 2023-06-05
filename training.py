@@ -62,6 +62,7 @@ def validation_step(
 
     with torch.no_grad():
         running_loss = 0
+        nb_nodes = 0
 
         for batch in dataloader:
             batch = batch.to(device)
@@ -77,9 +78,13 @@ def validation_step(
             pred = torch.sigmoid(val_outputs)
             preds.append(int(pred > 0.5))
             labels_gt.append(batch.y.item())
+            nb_nodes = val_outputs.shape[0]
+
+        print(f'Validation loss : {running_loss.item() / nb_nodes}')
 
     model.train()
     f1 = metrics.f1_score(labels_gt, preds)
+    print(f'Validation F1-score : {f1}')
 
     return f1
 
