@@ -1,0 +1,246 @@
+[
+    [
+        {
+            "model_name": "gat",
+            "head": 2,
+            "nb_conv": 3,
+            "out_channel": 8,
+            "train_f1": 0.3673413053641916,
+            "val_f1": 0.3815941097889029
+        },
+        {
+            "model_name": "gat",
+            "head": 2,
+            "nb_conv": 3,
+            "out_channel": 16,
+            "train_f1": 0.43908651692143186,
+            "val_f1": 0.3887199161708713
+        },
+        {
+            "model_name": "gat",
+            "head": 2,
+            "nb_conv": 3,
+            "out_channel": 32,
+            "train_f1": 0.4776615103986248,
+            "val_f1": 0.41928790940638677
+        },
+        {
+            "model_name": "gat",
+            "head": 2,
+            "nb_conv": 5,
+            "out_channel": 8,
+            "train_f1": 0.3633599821580364,
+            "val_f1": 0.3503980463293995
+        },
+        {
+            "model_name": "gat",
+            "head": 2,
+            "nb_conv": 5,
+            "out_channel": 16,
+            "train_f1": 0.40856240592238074,
+            "val_f1": 0.36829663405145435
+        },
+        {
+            "model_name": "gat",
+            "head": 2,
+            "nb_conv": 5,
+            "out_channel": 32,
+            "train_f1": 0.4620081973638747,
+            "val_f1": 0.4096457624913029
+        },
+        {
+            "model_name": "gat",
+            "head": 4,
+            "nb_conv": 3,
+            "out_channel": 8,
+            "train_f1": 0.45912719241269345,
+            "val_f1": 0.3877444582271854
+        },
+        {
+            "model_name": "gat",
+            "head": 4,
+            "nb_conv": 3,
+            "out_channel": 16,
+            "train_f1": 0.46180278162819205,
+            "val_f1": 0.39947824748884075
+        },
+        {
+            "model_name": "gat",
+            "head": 4,
+            "nb_conv": 3,
+            "out_channel": 32,
+            "train_f1": 0.5247453527501407,
+            "val_f1": 0.417878897982813
+        },
+        {
+            "model_name": "gat",
+            "head": 4,
+            "nb_conv": 5,
+            "out_channel": 8,
+            "train_f1": 0.4432378450811377,
+            "val_f1": 0.38433993574264125
+        },
+        {
+            "model_name": "gat",
+            "head": 4,
+            "nb_conv": 5,
+            "out_channel": 16,
+            "train_f1": 0.5306809368715903,
+            "val_f1": 0.40219029586548544
+        },
+        {
+            "model_name": "gat",
+            "head": 4,
+            "nb_conv": 5,
+            "out_channel": 32,
+            "train_f1": 0.5669885656403749,
+            "val_f1": 0.44845228332207066
+        },
+        {
+            "model_name": "gat",
+            "head": 8,
+            "nb_conv": 3,
+            "out_channel": 8,
+            "train_f1": 0.4689298342970722,
+            "val_f1": 0.3853229548868246
+        },
+        {
+            "model_name": "gat",
+            "head": 8,
+            "nb_conv": 3,
+            "out_channel": 16,
+            "train_f1": 0.5183691395449423,
+            "val_f1": 0.4327746064082777
+        },
+        {
+            "model_name": "gat",
+            "head": 8,
+            "nb_conv": 3,
+            "out_channel": 32,
+            "train_f1": 0.5898437889160429,
+            "val_f1": 0.44655244417460116
+        },
+        {
+            "model_name": "gat",
+            "head": 8,
+            "nb_conv": 5,
+            "out_channel": 8,
+            "train_f1": 0.469537586651277,
+            "val_f1": 0.3926131369274169
+        },
+        {
+            "model_name": "gat",
+            "head": 8,
+            "nb_conv": 5,
+            "out_channel": 16,
+            "train_f1": 0.6058606622074261,
+            "val_f1": 0.4309246946897239
+        },
+        {
+            "model_name": "gat",
+            "head": 8,
+            "nb_conv": 5,
+            "out_channel": 32,
+            "train_f1": 0.6815118113621843,
+            "val_f1": 0.47117558944009535
+        }
+    ],
+    [
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 3,
+            "out_channel": 16,
+            "train_f1": 0.42571991971738077,
+            "val_f1": 0.3966751067460078
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 3,
+            "out_channel": 32,
+            "train_f1": 0.5631134232705808,
+            "val_f1": 0.49121838872735213
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 3,
+            "out_channel": 64,
+            "train_f1": 0.6802146465915961,
+            "val_f1": 0.463946063891728
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 3,
+            "out_channel": 128,
+            "train_f1": 0.5710325387968331,
+            "val_f1": 0.4969473398066282
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 5,
+            "out_channel": 16,
+            "train_f1": 0.4944385832507626,
+            "val_f1": 0.4482562337181903
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 5,
+            "out_channel": 32,
+            "train_f1": 0.5805565267281327,
+            "val_f1": 0.46069399581880816
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 5,
+            "out_channel": 64,
+            "train_f1": 0.6027035706242404,
+            "val_f1": 0.45390116873050246
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 5,
+            "out_channel": 128,
+            "train_f1": 0.6024945550565917,
+            "val_f1": 0.4605239783944459
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 10,
+            "out_channel": 16,
+            "train_f1": 0.3664244143104411,
+            "val_f1": 0.36937332897402125
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 10,
+            "out_channel": 32,
+            "train_f1": 0.5446258384527819,
+            "val_f1": 0.41575430040440214
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 10,
+            "out_channel": 64,
+            "train_f1": 0.43180211059580237,
+            "val_f1": 0.4072125526741943
+        },
+        {
+            "model_name": "gnn",
+            "head": 0,
+            "nb_conv": 10,
+            "out_channel": 128,
+            "train_f1": 0.6058068303062256,
+            "val_f1": 0.41283039441275005
+        }
+    ]
+]

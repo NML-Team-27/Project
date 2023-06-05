@@ -15,7 +15,7 @@ from tqdm import tqdm
 import gnn
 
 
-def instantiate_model(model_name:str, out_channels_graph, in_channels_graph, heads, dropout) -> Any:
+def instantiate_model(model_name:str, out_channels_graph, in_channels_graph, nb_graph_conv, heads = None, dropout = 0.0) -> Any:
     """Instantiate the model given the configuration.
 
     Args:
@@ -31,6 +31,7 @@ def instantiate_model(model_name:str, out_channels_graph, in_channels_graph, hea
         return gnn.GNN(
             out_channels_graph=out_channels_graph,
             in_channels_graph=in_channels_graph,
+            nb_graphconv=nb_graph_conv,
         )
     elif model_name == "gat":
         return gnn.GAT(
@@ -38,6 +39,7 @@ def instantiate_model(model_name:str, out_channels_graph, in_channels_graph, hea
             out_channels_graph=out_channels_graph,
             heads=heads,
             dropout=dropout,
+            nb_graph_conv=nb_graph_conv
         )
 
     else:
@@ -75,16 +77,21 @@ def validation_step(
 
             running_loss += loss.item()
 
-            pred = torch.sigmoid(val_outputs)
-            preds.append(int(pred > 0.5))
-            labels_gt.append(batch.y.item())
-            nb_nodes = val_outputs.shape[0]
+            pred = torch.sigmoid(val_outputs) > 0.5
+            preds += pred.tolist()
+            labels_gt += batch.y[val_ids].tolist()
+            nb_nodes += val_outputs.shape[0]
 
-        print(f'Validation loss : {running_loss.item() / nb_nodes}')
+        # print(f'Validation loss : {running_loss / nb_nodes}')
 
     model.train()
     f1 = metrics.f1_score(labels_gt, preds)
-    print(f'Validation F1-score : {f1}')
+    recall = metrics.recall_score(labels_gt, preds)
+    precision = metrics.precision_score(labels_gt, preds)
+    # print(f'Validation F1-score : {f1}')
+    # print(f'Validation recall-score : {recall}')
+    # print(f'Validation precision-score : {precision}')
+
 
     return f1
 
@@ -123,9 +130,10 @@ def fit(
     for ep in range(epochs):
         running_loss = 0
         nb_nodes = 0
-        for i, batch in tqdm(
-            enumerate(dataloader), desc=f"Epoch {ep + 1} / {epochs}"
-        ):
+        # for i, batch in tqdm(
+        #     enumerate(dataloader), desc=f"Epoch {ep + 1} / {epochs}"
+        # ):
+        for i, batch in enumerate(dataloader):
             batch = batch.to(device)
 
             outputs = model(batch.x, batch.edge_index)
@@ -143,7 +151,7 @@ def fit(
 
         avg_loss = running_loss / nb_nodes
       
-        print(f"Avg. train loss of epoch {ep + 1} : {avg_loss:.4f}")
+        #print(f"Avg. train loss of epoch {ep + 1} : {avg_loss:.4f}")
 
         val_f1_score = validation_step(dataset, val_ids, model, criterion, device)
 
@@ -154,7 +162,11 @@ def fit(
     # Load best params based on validation F1-score
     model.load_state_dict(best_params)
 
-    return model
+    # print('=============================')
+    # print(f'Best validation F1-score : {best_val_f1}')
+    # print('=============================')
+
+    return model, best_val_f1
 
 
 def predict(
@@ -170,9 +182,9 @@ def predict(
     for batch in dataloader:
         batch = batch.to(device)
 
-        pred = torch.sigmoid(model(batch.x, batch.edge_index)).item()
-        preds.append(int(pred > 0.5))
-        labels_gt.append(batch.y.item())
+        pred = torch.sigmoid(model(batch.x, batch.edge_index)) > 0.5
+        preds += pred.long().tolist()
+        labels_gt += batch.y.long().tolist()
 
     return np.array(preds), np.array(labels_gt)
 
@@ -188,8 +200,9 @@ def train_gnn(
     epochs,
     out_channels_graph,
     in_channels_graph,
-    heads,
-    dropout
+    nb_graph_conv,
+    heads = None,
+    dropout = 0.0,
 ) -> Any:
     if torch.cuda.is_available():
         device = "cuda"
@@ -197,9 +210,12 @@ def train_gnn(
     else:
         device = "cpu"
 
-    model = instantiate_model(model_name, out_channels_graph, in_channels_graph, heads, dropout)
+    model = instantiate_model(model_name, out_channels_graph, in_channels_graph, nb_graph_conv, heads, dropout)
 
-    model = fit(
+    nb_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    #print(f'Number of parameters in model : {nb_params}')
+
+    model, best_val_f1 = fit(
         model, dataset, train_ids, val_ids, pos_weight, device, lr, epochs
     )
 
@@ -214,4 +230,4 @@ def train_gnn(
     results['train'] = classification_report(train_label_np, train_preds, output_dict=True)
     results['test'] = classification_report(test_label_np, test_preds, output_dict=True)
 
-    return results
+    return results, best_val_f1

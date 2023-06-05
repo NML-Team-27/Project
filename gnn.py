@@ -35,7 +35,7 @@ class ConvBlock(nn.Module):
             x (Tensor): tensor (batch size x channels x in_channels)
             edge_index (Tensor): tensor (2 x nb edges)
         """
-        return self.layers(x, edge_index)
+        return self.layers(x.float(), edge_index)
 
 
 class GNN(nn.Module):
@@ -47,8 +47,8 @@ class GNN(nn.Module):
 
     def __init__(
         self,
-        nb_graphconv: int=1,
-        out_channels_graph: int=1,
+        nb_graphconv: int = 1,
+        out_channels_graph: int = 1,
         in_channels_graph: int = 1,
     ) -> None:
         super().__init__()
@@ -58,14 +58,16 @@ class GNN(nn.Module):
         )
 
         self.relu = nn.ReLU()
-        self.fc1 = nn.Linear(out_channels_graph, 1)
+        self.fc1 = nn.Linear(out_channels_graph, out_channels_graph // 2)
+        self.fc2 = nn.Linear(out_channels_graph // 2, 1)
 
     def forward(
         self, x: Tensor, edge_index: Tensor
     ):
         x = self.conv(x, edge_index)
-
-        return self.fc1(x).squeeze(1)
+        x = self.relu(self.fc1(x))
+        
+        return self.fc2(x).squeeze(1)
 
 
 class GAT(nn.Module):
@@ -76,54 +78,40 @@ class GAT(nn.Module):
         in_channels_graph: int,
         out_channels_graph: int,
         heads: int,
+        nb_graph_conv: int,
         dropout: float,
     ) -> None:
         super().__init__()
 
-        self.gat_layers = pyg.nn.Sequential(
-            "x, edge_index",
-            [
+        layers = []
+
+        for _ in range(nb_graph_conv):
+            layers.append(
                 (
                     pyg.nn.GATv2Conv(
                         in_channels=in_channels_graph,
                         out_channels=out_channels_graph,
                         heads=heads,
-                        edge_dim=1,
                         dropout=dropout,
                     ),
                     "x, edge_index -> x",
                 ),
-                nn.ReLU(),
-                (
-                    pyg.nn.GATv2Conv(
-                        in_channels=out_channels_graph * heads,
-                        out_channels=out_channels_graph,
-                        heads=heads,
-                        edge_dim=1,
-                        dropout=dropout,
-                    ),
-                    "x, edge_index -> x",
-                ),
-                nn.ReLU(),
-                (
-                    pyg.nn.GATv2Conv(
-                        in_channels=out_channels_graph * heads,
-                        out_channels=out_channels_graph,
-                        heads=heads,
-                        edge_dim=1,
-                        dropout=dropout,
-                    ),
-                    "x, edge_index -> x",
-                ),
-                nn.ReLU()
-            ],
-        )
+            )
 
-        self.fc = nn.Linear(out_channels_graph * heads, 1)
+            #layers.append(nn.ReLU())
+            layers.append(nn.LeakyReLU())
+
+            in_channels_graph = out_channels_graph * heads
+
+        self.layers = pyg.nn.Sequential("x, edge_index", layers[:-1])
+        self.relu = nn.LeakyReLU() #nn.ReLU()
+        input_linear_size = out_channels_graph * heads
+        self.fc1 = nn.Linear(input_linear_size, input_linear_size // 2)
+        self.fc2 = nn.Linear(input_linear_size // 2, 1)
 
     def forward(
         self, x: Tensor, edge_index: Tensor
     ):
-        x = self.gat_layers(x, edge_index=edge_index)
-
-        return self.fc(x).squeeze(1)
+        x = self.layers(x.float(), edge_index=edge_index)
+        x = self.relu(self.fc1(x))
+        return self.fc2(x).squeeze(1)
