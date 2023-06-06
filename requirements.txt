@@ -1,4 +1,11 @@
 seaborn
 pecanpy
+scikit-learn
+pandas
+numpy
+networkx
+torch
 torch_geometric
-Sciait-learn
+plotly
+matplotlib
+nbformat>=4.2.0
