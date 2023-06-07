@@ -341,8 +341,9 @@ def cities_loop_gnn(data_path: str, seed: int = 42) -> None:
                 model_name='gnn',
                 lr=1e-3,
                 epochs=20,
-                out_channels_graph=16,
+                out_channels_graph=32,
                 in_channels_graph=18,
+                nb_graph_conv=3,
                 heads=5,
                 dropout=0.0
             )
@@ -355,9 +356,10 @@ def cities_loop_gnn(data_path: str, seed: int = 42) -> None:
                 model_name='gat',
                 lr=1e-3,
                 epochs=20,
-                out_channels_graph=16,
+                out_channels_graph=32,
                 in_channels_graph=18,
-                heads=5,
+                nb_graph_conv=3,
+                heads=8,
                 dropout=0.0
             )
             # Save the results 
