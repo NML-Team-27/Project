@@ -21,11 +21,11 @@ The repository is structured as follows
 │   │   └── stats.csv					# Statistics about data collection in the city (from the dataset)
 │   ├── handcrafted_features.csv		# All the features (both from the dataset and graph properties) that will be used during the training of the baseline models
 ├── eda_distributions.ipynb				# The notebook containing all the data exploration
-├── GNN.ipynb
+├── GNN.ipynb							# notebook with everything related to GNN
 ├── gnn.py
-├── handcrafted_features.ipynb
+├── handcrafted_features.ipynb			# Merged all data in a single dataframe
 ├── labelling.ipynb						# Notebook to label our data
-├── node2vec.ipynb
+├── node2vec.ipynb						# Notebook with everything related to the baseline models (handcrafted and Node2vec)
 ├── radii.json							# The radii used to determine the city center stops (distance from the coordinates of the center) 
 ├── requirements.txt					# File containing all the libraries to run our code
 ├── save_gnns.json						# Cross validation for the parameters of the GNN
