@@ -6,9 +6,15 @@ from typing import Optional
 
 
 class ConvBlock(nn.Module):
-    """Graph convolution"""
+    """class represent a Graph convolutio block """
 
     def __init__(self, nb_conv: int = 2, in_channels: int = -1, out_channels: int = 1) -> None:
+        """
+        Args:
+            nb_conv  (int): the number of convolution in the convolution layer
+            in_channels (int): the number of channels as input of the convolution layer
+            out_channels (int): the number of channels as output of the convolution layer
+        """
         super().__init__()
 
         layers = []
@@ -38,10 +44,7 @@ class ConvBlock(nn.Module):
 
 
 class GNN(nn.Module):
-    """GNN model in two blocks:
-
-    - temporal processing : Conv1D
-    - spatial processing : GraphConv
+    """GNN model
     """
 
     def __init__(
@@ -50,6 +53,12 @@ class GNN(nn.Module):
         out_channels_graph: int = 1,
         in_channels_graph: int = 1,
     ) -> None:
+        """
+        Args:
+            nb_graph_conv (int): the number of convolution in the convolution layer
+            out_channels_graph (int): the number of channels as output of the convolution layer
+            in_channels_graph (int): the number of channels as input of the convolution layer
+        """
         super().__init__()
 
         self.conv = ConvBlock(
@@ -63,6 +72,12 @@ class GNN(nn.Module):
     def forward(
         self, x: Tensor, edge_index: Tensor
     ):
+        """Forward pass
+
+        Args:
+            x (Tensor): tensor (batch size x channels x in_channels)
+            edge_index (Tensor): tensor (2 x nb edges)
+        """
         x = self.conv(x, edge_index)
         x = self.relu(self.fc1(x))
         
@@ -80,6 +95,14 @@ class GAT(nn.Module):
         nb_graph_conv: int,
         dropout: float,
     ) -> None:
+        """
+        Args:
+            in_channels_graph (int): the number of channels as input of the convolution layer
+            out_channels_graph (int): the number of channels as output of the convolution layer
+            heads (int): the number of heads (in the GAT network)
+            nb_graph_conv (int): the number of convolution in the convolution layer
+            dropout (float): the dropout rate in the GAT architecture 
+        """
         super().__init__()
 
         layers = []
@@ -110,6 +133,12 @@ class GAT(nn.Module):
     def forward(
         self, x: Tensor, edge_index: Tensor
     ):
+        """Forward pass
+
+        Args:
+            x (Tensor): tensor (batch size x channels x in_channels)
+            edge_index (Tensor): tensor (2 x nb edges)
+        """
         x = self.layers(x.float(), edge_index=edge_index)
         x = self.relu(self.fc1(x))
         return self.fc2(x).squeeze(1)

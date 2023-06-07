@@ -22,7 +22,7 @@ The repository is structured as follows
 │   ├── handcrafted_features.csv		# All the features (both from the dataset and graph properties) that will be used during the training of the baseline models
 ├── eda_distributions.ipynb				# The notebook containing all the data exploration
 ├── GNN.ipynb							# notebook with everything related to GNN
-├── gnn.py
+├── gnn.py								# Definintion of GNN mdoel
 ├── handcrafted_features.ipynb			# Merged all data in a single dataframe
 ├── labelling.ipynb						# Notebook to label our data
 ├── node2vec.ipynb						# Notebook with everything related to the baseline models (handcrafted and Node2vec)
@@ -31,7 +31,7 @@ The repository is structured as follows
 ├── save_gnns.json						# Cross validation for the parameters of the GNN
 ├── save_p_q.json						# Cross validation for the parameters  p and q for Node2Vec parameters. 
 ├── training_baseline.py				# All the functions to train the baseline
-├── training_gnn.py
+├── training_gnn.py						# Util file with all the code to train the GNNs
 └── utils.py							# Util script to gather data and compute properties value
 
 ```
