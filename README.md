@@ -1,30 +1,62 @@
 # Project
 
-## Exploration
+In this project, we aims at building models that can predict if one node is part of the city center or not. Our dataset comes from this link and we extract all the information from this dataset only.
 
-### Tasks
+The repository is structured as follows 
 
-- [x] Distribution of transports per city
-- [x] Distribution of labels per city
-- [x] Distribution of labels per city and per transports (4 x 2 bars plot)
-- [x] Distribution of duration avg per city
-- [x] Distribution of n_vehicules per city
-- [x] Distribution of distances to other stops
-- [x] Check if nodes between are duplicated between types of transports : no (but can potentially have multi-edges with different types of transports)
-- Graph properties
-    - Clustering coefficients
-    - Degree distribution per city
-    - Density
-    - Spectrum
-    - Centralities
-    - etc
-- Function to build the graphs
+```
+├── README.md
+├── centers.json						# City center coordinates 
+├── data
+│   ├── all_metrics.csv					# CSV file containing all the graph properties for all the nodes in all cities
+│   ├── one folder per city
+│   │   ├── adj_mat.edg					# The adjacency matrix
+│   │   ├── license.txt					# license file for the city
+│   │   ├── network_combined.csv		# Network edges with attributes from the original dataset
+│   │   ├── network_nodes.csv			# Stop names and coordinates
+│   │   ├── network_nodes_labeled.csv	# Stop names, coordinates and labels
+│   │   ├── results
+│   │   │   ├── node2vec_embeddings.npy	# Node2Vec embeddings used in the best Node2Vec model
+│   │   │   └── results.json			# The experiment results for the current city
+│   │   └── stats.csv					# Statistics about data collection in the city (from the dataset)
+│   ├── handcrafted_features.csv		# All the features (both from the dataset and graph properties) that will be used during the training of the baseline models
+├── eda_distributions.ipynb				# The notebook containing all the data exploration
+├── GNN.ipynb
+├── gnn.py
+├── handcrafted_features.ipynb
+├── labelling.ipynb						# Notebook to label our data
+├── node2vec.ipynb
+├── radii.json							# The radii used to determine the city center stops (distance from the coordinates of the center) 
+├── requirements.txt					# File containing all the libraries to run our code
+├── save_gnns.json						# Cross validation for the parameters of the GNN
+├── save_p_q.json						# Cross validation for the parameters  p and q for Node2Vec parameters. 
+├── training_baseline.py				# All the functions to train the baseline
+├── training_gnn.py
+└── utils.py							# Util script to gather data and compute properties value
+
+```
+
+### Data
+To get the data, everything is stored on Git-lfs. You can run the following command to get the data
+
+```
+git-lfs pull
+```
+
+### Experiments
+Below we recally the best parameters that we obtained in our experiments. 
+
+- Node2Vec: p=5.0, q=0.1, num_walks=100, hidden-dim = 256.
+- Conv GNN: nb_conv = 3, dim = 32. 
+- GAT: nb_conv = 3, dim = 32, heads = 8
+
+The detailled results can be found in [this file for baseline](save_p_q.json) and [this file for GNN](save_gnns.json)
+
+To run experiments, you can use the following two files: 
+
+- `cities_loop` in [training_baseline](training_baseline.py).
+- `cities_loop_gnn` in [training_gnn](training_gnn.py).
 
 
-### Attributes
-Attributes we keep :
-
-- type of transport
-- duration avg
-- n_vehicule
-- other node features we create : e.g. clustering coefficient, etc.
+### Report
+The report can be found in the `report.pdf` file.

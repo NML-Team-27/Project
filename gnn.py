@@ -5,7 +5,6 @@ from torch import nn
 from typing import Optional
 
 
-
 class ConvBlock(nn.Module):
     """Graph convolution"""
 
@@ -98,13 +97,12 @@ class GAT(nn.Module):
                 ),
             )
 
-            #layers.append(nn.ReLU())
             layers.append(nn.LeakyReLU())
 
             in_channels_graph = out_channels_graph * heads
 
         self.layers = pyg.nn.Sequential("x, edge_index", layers[:-1])
-        self.relu = nn.LeakyReLU() #nn.ReLU()
+        self.relu = nn.LeakyReLU() 
         input_linear_size = out_channels_graph * heads
         self.fc1 = nn.Linear(input_linear_size, input_linear_size // 2)
         self.fc2 = nn.Linear(input_linear_size // 2, 1)

@@ -9,3 +9,5 @@ torch_geometric
 plotly
 matplotlib
 nbformat>=4.2.0
+geopy
+tqdm
