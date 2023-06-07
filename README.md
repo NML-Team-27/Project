@@ -60,3 +60,8 @@ To run experiments, you can use the following two files:
 
 ### Report
 The report can be found in the `report.pdf` file.
+
+### File
+The data exploration and feature extraction can found in [labelling.ipynb](labelling.ipynb), [handcrafted_features.ipynb](handcrafted_features.ipynb) and   [eda_distributions.ipynb](eda_distributions.ipynb).
+
+The training code is in [GNN.ipynb](GNN.ipynb) and [node2vec.ipynb](node2vec.ipynb). 
