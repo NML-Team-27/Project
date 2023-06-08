@@ -6,7 +6,7 @@ The repository is structured as follows
 
 ```
 ├── README.md
-├── centers.json						            # City center coordinates 
+├── centers.json					# City center coordinates 
 ├── data
 │   ├── all_metrics.csv					        # CSV file containing all the graph properties for all the nodes in all cities
 │   ├── one folder per city
