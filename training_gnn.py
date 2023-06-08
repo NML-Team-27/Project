@@ -113,13 +113,13 @@ def validation_step(
 
 def fit(
     model: nn.Module,
-    dataset,
-    train_ids,
-    val_ids,
+    dataset: pyg.data.Dataset,
+    train_ids: NDArray[np.int_],
+    val_ids: NDArray[np.int_],
     pos_weight: float,
     device: str,
-    lr,
-    epochs
+    lr: float,
+    epochs: int
 ):
     """Train the given model.
 
