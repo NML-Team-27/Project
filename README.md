@@ -6,33 +6,33 @@ The repository is structured as follows
 
 ```
 ├── README.md
-├── centers.json						# City center coordinates 
+├── centers.json			# City center coordinates 
 ├── data
-│   ├── all_metrics.csv					# CSV file containing all the graph properties for all the nodes in all cities
+│   ├── all_metrics.csv	                     # CSV file containing all the graph properties for all the nodes in all cities
 │   ├── one folder per city
-│   │   ├── adj_mat.edg					# The adjacency matrix
-│   │   ├── license.txt					# license file for the city
-│   │   ├── network_combined.csv		# Network edges with attributes from the original dataset
-│   │   ├── network_nodes.csv			# Stop names and coordinates
-│   │   ├── network_nodes_labeled.csv	# Stop names, coordinates and labels
+│   │   ├── adj_mat.edg				      # The adjacency matrix
+│   │   ├── license.txt					        # license file for the city
+│   │   ├── network_combined.csv		    # Network edges with attributes from the original dataset
+│   │   ├── network_nodes.csv			      # Stop names and coordinates
+│   │   ├── network_nodes_labeled.csv	  # Stop names, coordinates and labels
 │   │   ├── results
 │   │   │   ├── node2vec_embeddings.npy	# Node2Vec embeddings used in the best Node2Vec model
-│   │   │   └── results.json			# The experiment results for the current city
-│   │   └── stats.csv					# Statistics about data collection in the city (from the dataset)
-│   ├── handcrafted_features.csv		# All the features (both from the dataset and graph properties) that will be used during the training of the baseline models
-├── eda_distributions.ipynb				# The notebook containing all the data exploration
-├── GNN.ipynb							# notebook with everything related to GNN
-├── gnn.py								# Definintion of GNN mdoel
-├── handcrafted_features.ipynb			# Merged all data in a single dataframe
-├── labelling.ipynb						# Notebook to label our data
-├── node2vec.ipynb						# Notebook with everything related to the baseline models (handcrafted and Node2vec)
-├── radii.json							# The radii used to determine the city center stops (distance from the coordinates of the center) 
-├── requirements.txt					# File containing all the libraries to run our code
-├── save_gnns.json						# Cross validation for the parameters of the GNN
-├── save_p_q.json						# Cross validation for the parameters  p and q for Node2Vec parameters. 
-├── training_baseline.py				# All the functions to train the baseline
-├── training_gnn.py						# Util file with all the code to train the GNNs
-└── utils.py							# Util script to gather data and compute properties value
+│   │   │   └── results.json			      # The experiment results for the current city
+│   │   └── stats.csv					          # Statistics about data collection in the city (from the dataset)
+│   ├── handcrafted_features.csv		    # All the features (both from the dataset and graph properties) that will be used during the training of the baseline models
+├── eda_distributions.ipynb				      # The notebook containing all the data exploration
+├── GNN.ipynb							              # notebook with everything related to GNN
+├── gnn.py								              # Definintion of GNN mdoel
+├── handcrafted_features.ipynb			    # Merged all data in a single dataframe
+├── labelling.ipynb						          # Notebook to label our data
+├── node2vec.ipynb						          # Notebook with everything related to the baseline models (handcrafted and Node2vec)
+├── radii.json							            # The radii used to determine the city center stops (distance from the coordinates of the center) 
+├── requirements.txt					          # File containing all the libraries to run our code
+├── save_gnns.json						          # Cross validation for the parameters of the GNN
+├── save_p_q.json						            # Cross validation for the parameters  p and q for Node2Vec parameters. 
+├── training_baseline.py				        # All the functions to train the baseline
+├── training_gnn.py						          # Util file with all the code to train the GNNs
+└── utils.py							              # Util script to gather data and compute properties value
 
 ```
 
