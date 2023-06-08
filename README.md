@@ -6,11 +6,11 @@ The repository is structured as follows
 
 ```
 ├── README.md
-├── centers.json					# City center coordinates 
+├── centers.json				# City center coordinates 
 ├── data
-│   ├── all_metrics.csv					        # CSV file containing all the graph properties for all the nodes in all cities
+│   ├── all_metrics.csv	# CSV file containing all the graph properties for all the nodes in all cities
 │   ├── one folder per city
-│   │   ├── adj_mat.edg					        # The adjacency matrix
+│   │   ├── adj_mat.edg				# The adjacency matrix
 │   │   ├── license.txt					        # license file for the city
 │   │   ├── network_combined.csv		    # Network edges with attributes from the original dataset
 │   │   ├── network_nodes.csv			      # Stop names and coordinates
