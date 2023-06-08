@@ -8,7 +8,7 @@ The repository is structured as follows
 ├── README.md
 ├── centers.json				# City center coordinates 
 ├── data
-│   ├── all_metrics.csv	# CSV file containing all the graph properties for all the nodes in all cities
+│   ├── all_metrics.csv	              # CSV file containing all the graph properties for all the nodes in all cities
 │   ├── one folder per city
 │   │   ├── adj_mat.edg				# The adjacency matrix
 │   │   ├── license.txt					        # license file for the city
